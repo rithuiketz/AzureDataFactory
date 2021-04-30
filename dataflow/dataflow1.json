@@ -1,0 +1,28 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "TaxiTrip",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "DbStore"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tVendorID as string,\n\t\ttpep_pickup_datetime as string,\n\t\ttpep_dropoff_datetime as string,\n\t\tpassenger_count as string,\n\t\ttrip_distance as string,\n\t\tRatecodeID as string,\n\t\tstore_and_fwd_flag as string,\n\t\tPULocationID as string,\n\t\tDOLocationID as string,\n\t\tpayment_type as string,\n\t\tfare_amount as string,\n\t\textra as string,\n\t\tmta_tax as string,\n\t\ttip_amount as string,\n\t\ttolls_amount as string,\n\t\timprovement_surcharge as string,\n\t\ttotal_amount as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tmoveFiles: ['','Processed']) ~> source1\nsource1 sink(input(\n\t\tVendorID as integer,\n\t\ttpep_pickup_datetime as timestamp,\n\t\ttpep_dropoff_datetime as timestamp,\n\t\tpassenger_count as integer,\n\t\ttrip_distance as double,\n\t\tRatecodeID as integer,\n\t\tstore_and_fwd_flag as string,\n\t\tPULocationID as integer,\n\t\tDOLocationID as integer,\n\t\tpayment_type as integer,\n\t\tfare_amount as double,\n\t\textra as double,\n\t\tmta_tax as double,\n\t\ttip_amount as double,\n\t\ttolls_amount as double,\n\t\timprovement_surcharge as double,\n\t\ttotal_amount as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> DbStore"
+		}
+	}
+}

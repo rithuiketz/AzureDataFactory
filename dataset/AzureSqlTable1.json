@@ -1,0 +1,103 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "VendorID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tpep_pickup_datetime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "tpep_dropoff_datetime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "passenger_count",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "trip_distance",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RatecodeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "store_and_fwd_flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PULocationID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DOLocationID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "payment_type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fare_amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "extra",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "mta_tax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tip_amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tolls_amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "improvement_surcharge",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "total_amount",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "YELLOW_TAXI_TRIP_DATA"
+		}
+	}
+}
